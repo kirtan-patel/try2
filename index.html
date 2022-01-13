@@ -4,11 +4,31 @@
 
 <head>
   <meta charset="UTF-8">
-  <title> Responsive Contact Us Form | CodingLab </title>
+  <title> PATEL SAMAJ'S SPORTS DAY </title>
   <link rel="stylesheet" href="style.css">
   <!-- Fontawesome CDN Link -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" type="text/css" media="screen" href="jquery-ui.css" />
+  <script src="jquery.js"></script>
+  <script src="jquery-ui.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      var age = "";
+      $('#dob').datepicker({
+        onSelect: function(value, ui) {
+          var today = new Date();
+          age = today.getFullYear() - ui.selectedYear;
+          $('#age').val(age);
+        },
+        changeMonth: true,
+        changeYear: true,
+        yearRange: "-100:+0"
+      })
+    })
+  </script>
+
 </head>
 
 <body>
@@ -40,7 +60,7 @@
           <div>
             <label class="label">Gender:</label>
             <select style="background-color: #f0f1f8; border-radius: 5px;" class="input-box" name="gender" id="gender">
-              <option value="">Select your gender</option>
+              <option value="" disabled>Select your gender</option>
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
@@ -48,14 +68,14 @@
 
 
 
-          <div class="input-box message-box" style="margin-bottom: 40px;">
+          <div class="input-box" style="margin-bottom: 40px;">
             <label class="label">D.O.B:</label>
-            <input type="date" placeholder="Enter your phone number">
+            <input type="text" id="dob" placeholder="Enter your D.O.B" autocomplete="off">
           </div>
 
           <div class="input-box">
             <label class="label">Age:</label>
-            <input type="number" placeholder="Enter your age">
+            <input type="number" id="age" placeholder="Enter your age">
           </div>
 
           <!-- games -->
@@ -71,7 +91,6 @@
       </div>
     </div>
   </div>
-
 </body>
 
 </html>
